@@ -112,9 +112,24 @@ echo '<br/>';
 echo "Shuma eshte : $sum";
 echo '<br/>';
  
-echo "Gjenden $count plotpjestuesa te 3";
+echo "Gjenden $count shumefisha te 3.";
+echo '<br/>';
 
 
+
+//CIKLI FOREACH
+
+$numrat = [2,3,7,10];
+$numrat2 = [12,63,76,10];
+
+foreach ($numrat2 as $celesi=>$numri){
+
+    $hapi = $celesi + 1;
+    echo "$celesi : $numri. Hapi i  $hapi<br>";
+
+
+
+}
 
 
 
@@ -144,6 +159,86 @@ echo "Gjenden $count plotpjestuesa te 3";
     
     
     ?>
+
+
+
+
+<table id="t01">
+  <tr>
+    <th>Nr</th>
+    <th>Note</th>
+   
+  </tr>
+
+<?php 
+
+
+
+for($i = 1; $i<=10; $i++){
+
+    echo "<tr>";
+    echo "<td> $i</td>";
+    echo "<td>";
+
+    if($i%5 == 0){
+        echo "=> shumefish.";
+    }
+    echo "</td>";
+
+    echo "</tr>";
+
+}
+
+
+
+
+
+// $text = '';
+
+// for($i = 1; $i<=10; $i++){
+
+//     $text  .= 
+//     "<tr>
+//     <td> $i</td>
+//     <td>";
+
+//     if($i%5 == 0){
+//         $text = $text ."=> shumefish.";
+//     }
+//     $text  .=  "</td>";
+
+//     $text  .=  "</tr>";
+
+// }
+
+// echo $text;
+
+
+//Ushtrim: Mbush nje array me numrat 5-1
+
+
+
+?>
+
+
+  
+</table>
+
+
+<?php 
+$arr_2 = [];
+
+for($i=0; $i<5; $i++){
+
+    $arr_2[$i] = 5 - $i;
+
+}
+
+var_dump($arr_2);
+
+
+
+?>
 </body>
 </html>
 
