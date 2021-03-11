@@ -214,7 +214,6 @@ for($i = 1; $i<=10; $i++){
 // echo $text;
 
 
-//Ushtrim: Mbush nje array me numrat 5-1
 
 
 
@@ -226,6 +225,9 @@ for($i = 1; $i<=10; $i++){
 
 
 <?php 
+
+//Ushtrim: Mbush nje array me numrat 5-1
+
 $arr_2 = [];
 
 for($i=0; $i<5; $i++){
@@ -233,10 +235,42 @@ for($i=0; $i<5; $i++){
     $arr_2[$i] = 5 - $i;
 
 }
+echo "<pre>";
+print_r($arr_2);
+echo "<pre>";
 
-var_dump($arr_2);
 
 
+
+//ASSOCIATIVE ARRAYS
+
+$assoc = array(
+    "Peter"=>28,
+    "Ann"=>16,
+    "John" => 23);
+
+echo "<pre>";
+var_dump($assoc);
+echo "<pre>";
+
+
+foreach($assoc as $name => $age){
+
+    echo "$name is $age years old. <br>";
+    
+}
+
+echo "<br>";
+
+$colors = ['Red'=> '#ff0000',
+'Green'=> '#00ff00',
+'Blue'=> '#0000ff'];
+
+
+foreach($colors as $key => $item){
+echo "<span style='color:$item'>$key </span>'s code is<span style='color:$key'> $item </span><br>";
+
+}
 
 ?>
 </body>
