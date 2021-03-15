@@ -265,7 +265,8 @@ foreach($assoc as $name => $age){
 
 echo "<br>";
 
-$colors = ['Red'=> '#ff0000',
+$colors = [
+'Red'=> '#ff0000',
 'Green'=> '#00ff00',
 'Blue'=> '#0000ff'];
 
@@ -289,28 +290,12 @@ echo "<br>";
 $numeric_array = [3,18,23,6];
 
 
-echo "<pre>";
-print_r($numeric_array);
-echo "<pre>";
-
-echo "<pre>";
-print_r($colors);
-echo "<pre>";
-
-
 //unset(array_name[index]) => heq indeksin e array, bashke me vleren perkatese
 
 unset($numeric_array[2]);
 unset($colors['Red']);
 
 
-echo "<pre>";
-print_r($numeric_array);
-echo "<pre>";
-
-echo "<pre>";
-print_r($colors);
-echo "<pre>";
 
 //array_values(array_name) => te kthen arrayn si nje array me indekse te vendosura sipas standartit (te numeric arrays)
 
@@ -319,23 +304,13 @@ $y = array_values($colors);
 
 
 
-echo "<pre>";
-print_r($x);
-echo "<pre>";
-
-
-
-echo "<pre>";
-print_r($y);
-echo "<pre>";
-
-
-
 //2.Afisho vleren e pare te nje array associative 
 
 //reset(array_name) => kthen vleren e pare te nje array
 
 echo reset($colors);
+
+
 
 // sort(array_name); NUK KRIJOJNE KOPJE, RENDISIN ARRAYN DHE E KTHEJNE TE RENDITUR
 /*3. rendit arrayn:
@@ -389,6 +364,7 @@ echo "<pre>";
 $temp_str = "28,31,-2,-16,19,43,12,14,16,-4,-10,12,28,36";
  //explode(delimeter,string) =>kthen nje array te indeksuar nga nje string ku elementet ndahen nga delimeter
 
+ $avg_temp = 0;
  $temp_array = explode(',', $temp_str);
  echo "<pre>";
  print_r($temp_array);
@@ -427,6 +403,45 @@ for($i=$temp_size-1; $i>$temp_size-6; $i--){
 
 
 
+#FUNKSIONET 
+
+function sum($a, $b, $c=0){
+    return $a+$b+$c;
+
+
+}
+
+
+echo "<br> Shuma e numrave eshte: <br>";
+echo sum(12,1,3);
+echo "<br> Shuma e numrave eshte: <br>";
+echo sum(12,1);
+
+
+
+#ushtrim: gjej me te madhin e 4 numrave 
+
+$a = 6;
+$b = 4;
+$c = 88;
+$d = 16;
+
+
+
+function max_1($a, $b){
+
+    if($a > $b){
+        return $a;
+    } else return $b;
+}
+
+$max1 = max_1($a,$b);
+$max2 = max_1($max1, $c);
+$max3 = max_1($max2, $d);
+
+echo "<br> Numri me i madh eshte: <br>";
+
+echo $max3;
 
 
 ?>
