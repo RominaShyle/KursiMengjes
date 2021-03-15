@@ -249,6 +249,9 @@ $assoc = array(
     "Ann"=>16,
     "John" => 23);
 
+
+    $assoc['Jane'] = 31; //Nqs indeksi ekzisto, mbivendoset. Nese nuk gjendet, e shton si te fundit
+
 echo "<pre>";
 var_dump($assoc);
 echo "<pre>";
@@ -268,9 +271,163 @@ $colors = ['Red'=> '#ff0000',
 
 
 foreach($colors as $key => $item){
+
 echo "<span style='color:$item'>$key </span>'s code is<span style='color:$key'> $item </span><br>";
 
 }
+
+echo "<br>";
+
+
+#USHTRIME ARRAYS
+
+
+//1. Jepet nje array, fshi nje element nga array dhe me pas afisho arrayn me celesa te normalizuar.
+// a) Kur eshte array numerike
+//b) Kur eshte associative array
+
+$numeric_array = [3,18,23,6];
+
+
+echo "<pre>";
+print_r($numeric_array);
+echo "<pre>";
+
+echo "<pre>";
+print_r($colors);
+echo "<pre>";
+
+
+//unset(array_name[index]) => heq indeksin e array, bashke me vleren perkatese
+
+unset($numeric_array[2]);
+unset($colors['Red']);
+
+
+echo "<pre>";
+print_r($numeric_array);
+echo "<pre>";
+
+echo "<pre>";
+print_r($colors);
+echo "<pre>";
+
+//array_values(array_name) => te kthen arrayn si nje array me indekse te vendosura sipas standartit (te numeric arrays)
+
+$x = array_values($numeric_array);
+$y = array_values($colors);
+
+
+
+echo "<pre>";
+print_r($x);
+echo "<pre>";
+
+
+
+echo "<pre>";
+print_r($y);
+echo "<pre>";
+
+
+
+//2.Afisho vleren e pare te nje array associative 
+
+//reset(array_name) => kthen vleren e pare te nje array
+
+echo reset($colors);
+
+// sort(array_name); NUK KRIJOJNE KOPJE, RENDISIN ARRAYN DHE E KTHEJNE TE RENDITUR
+/*3. rendit arrayn:
+a) Rend rrites sipas vleres => asort(array_name)
+b) Rend rrites sipas celesit  => ksort(array_name)
+c) Rend zbrites sipas vleres  => arsort(array_name)
+d) Rend zbrites sipas celesit  => krsort(array_name) 
+*/
+
+echo "<pre>";
+print_r($assoc);
+echo "<pre>";
+
+asort($assoc);
+echo "Rend rrites sipas vleres:";
+
+echo "<pre>";
+print_r($assoc);
+echo "<pre>";
+
+
+ksort($assoc);
+echo "Rend rrites sipas celesit";
+
+echo "<pre>";
+print_r($assoc);
+echo "<pre>";
+
+
+
+
+arsort($assoc);
+echo "Rend zbrites sipas vleres";
+
+echo "<pre>";
+print_r($assoc);
+echo "<pre>";
+
+
+krsort($assoc);
+echo "Rend zbrites sipas celesit";
+
+echo "<pre>";
+print_r($assoc);
+echo "<pre>";
+
+
+
+//4. llogarit temperaturen mesatare, 5 me te uletat dhe 5 me te lartat ne STRING
+
+$temp_str = "28,31,-2,-16,19,43,12,14,16,-4,-10,12,28,36";
+ //explode(delimeter,string) =>kthen nje array te indeksuar nga nje string ku elementet ndahen nga delimeter
+
+ $temp_array = explode(',', $temp_str);
+ echo "<pre>";
+ print_r($temp_array);
+ echo "<pre>";
+ 
+$temp_total = 0.0; 
+$temp_size = count($temp_array);
+
+foreach($temp_array as $v){
+    $temp_total += $v;
+}
+
+$avg_temp = $temp_total/$temp_size;
+
+
+asort($temp_array);
+echo "<pre>";
+print_r($temp_array);
+echo "<pre>";
+$temp_array = array_values($temp_array);
+echo "<pre>";
+print_r($temp_array);
+echo "<pre>";
+echo "5 temperaturat me te uleta: <br>";
+for($i=0; $i<5; $i++){
+
+    echo $temp_array[$i] . '<br>';
+}
+
+echo "5 temperaturat me te larta: <br>";
+
+for($i=$temp_size-1; $i>$temp_size-6; $i--){
+
+    echo $temp_array[$i] . '<br>';
+}
+
+
+
+
 
 ?>
 </body>
