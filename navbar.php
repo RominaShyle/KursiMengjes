@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <!--  Linket e listes se parenditur -->
           <a class="navbar-brand px-3" href="#">
-         <?php echo SITE_TITLE; ?>
+         <?= isset($_SESSION['username']) ? $_SESSION['username'] : SITE_TITLE ?>
           </a>
   
           <!-- buton per Toggle/Collapse  -->
@@ -33,9 +33,13 @@
                 </li>
                 </ul>
   
-
-  
+<?php if(isset($_SESSION['username'])) {?>
+                <form class="form-inline my-2 my-lg-0" action="logout.php" method="get">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
+    </form>
+    <?php } ?>
           </div>
+         
   
       </nav>
   

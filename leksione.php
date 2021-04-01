@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 
 session_start();
@@ -18,6 +14,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 echo "<pre>";
 
 var_dump($_GET);
+echo "</pre>";
+echo "<pre>";
+
+var_dump($_SESSION);
 echo "</pre>";
 
 echo "<pre>";
