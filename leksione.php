@@ -4,6 +4,17 @@
 
 <?php
 
+session_start();
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if($_POST['delete_session']){
+        if(isset($_SESSION['counter']))
+        unset($_SESSION['counter']);
+        session_destroy();
+        header('Location: index.php');
+    }
+}
+
 echo "<pre>";
 
 var_dump($_GET);

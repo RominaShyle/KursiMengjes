@@ -1,7 +1,13 @@
 
 <?php
 
+session_start();
+if(!isset($_SESSION['counter'])){
+  $_SESSION['counter'] = 1;
+}else
+$_SESSION['counter'] += 1;
 
+echo "<br>Kam aardhur ne faqe ". $_SESSION['counter'] . " here. <br>";
 
 echo "<pre>";
 
@@ -18,6 +24,7 @@ echo "<pre>";
 var_dump($_COOKIE);
 echo "</pre>";
 
+
 ##COOKIES ##
 
 //setcookie("name","John", time() + 7200 , '/', "", 0);
@@ -26,14 +33,12 @@ echo "</pre>";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
   if(isset($_POST['remember']) && $_POST['remember'] == 'on'){
-
    setcookie('username', $_POST['username'], time() + 3600, '/' , "", 0);
    setcookie('password', $_POST['password'], time() + 3600, '/' , "", 0);
   }else
   if(!isset($_POST['remember'])){
     setcookie('username', '', time() - 3600, '/' , "", 0);
     setcookie('password', '', time() - 3600, '/' , "", 0);
-
   }
 }
 ?>
@@ -63,7 +68,8 @@ require_once 'head.php';
 require_once 'navbar.php';
 ?>
 <div class="container my-4">
-
+<form action="leksione.php" method="post">
+<button type="submit" class="btn btn-secondary" name="delete_session" value="1">Delete Session</button></form>
 <div class="row">
 <div class="col-md-8">
     <div class="row">
@@ -86,8 +92,7 @@ require_once 'navbar.php';
 
 
 if(isset($_POST['username']))
-echo "<h3>Thank you ". $_POST
-['username']  .", your form has been submitted</h3>  
+echo "<h3>Thank you ". $_POST['username']  .", your form has been submitted</h3>  
 ";
 else 
 echo '<div class="alert alert-danger my-3 text-center" role="alert">
