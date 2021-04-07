@@ -26,7 +26,7 @@
   
                    
                   <li class="nav-item">
-                    <a class="nav-link" href="prova/test.html"> About us </a>
+                    <a class="nav-link" href="klasat.php"> About us </a>
                   </li>
                   <li class="nav-item">
                   <a class="nav-link" href="contact.html"> Contact </a>

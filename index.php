@@ -133,7 +133,7 @@ Submit your form!
 <?php
 
 }
-else 
+else {
 ?>
 <div class="col-md-4">
     <div class="card" style="width: 18rem;">
@@ -142,6 +142,30 @@ else
   </div>
 </div>
         </div>
-    
+    <?php } ?>
 </body>
+
+<script>
+$(document).ready(function(){
+
+$.ajax({
+    url:"http://api.tvmaze.com/schedule?country=US",
+    type:"GET",
+    success: function(response){
+      $.each(response, function(index, value) {
+  console.log(value.show);
+
+});
+     
+
+        
+    }
+})
+
+
+
+
+
+
+})</script>
 </html>
