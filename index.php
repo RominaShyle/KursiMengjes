@@ -21,10 +21,10 @@ $_SESSION['counter'] += 1;
 // var_dump($_POST);
 // echo "</pre>";
 
-echo "<pre>";
+// echo "<pre>";
 
-var_dump($_SESSION);
-echo "</pre>";
+// var_dump($_SESSION);
+// echo "</pre>";
 
 
 ##COOKIES ##
@@ -126,7 +126,13 @@ Submit your form!
     <label class="form-check-label" for="exampleCheck1">Remember me </label>
   </div>
   <button type="submit" class="btn btn-primary">Log in</button>
-</form></div>
+</form>
+</div>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+<input type="file" name="fileToUpload" id="fileToUpload">
+<input type="submit" value="submit" name="submit" class="btn btn-primary">
+</form>
 </div>
 
 </div>
