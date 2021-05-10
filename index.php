@@ -159,14 +159,10 @@ $.ajax({
     type:"GET",
     success: function(response){
       $.each(response, function(index, value) {
-  console.log(value.show);
-
+        console.log(value.show);
+    });      
+  }
 });
-     
-
-        
-    }
-})
 
 
 
