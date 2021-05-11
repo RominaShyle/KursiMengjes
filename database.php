@@ -17,4 +17,3 @@ if($conn->connect_error){
 
 
 
-echo "jam tek lidhja me databazen";
