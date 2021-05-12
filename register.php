@@ -45,8 +45,8 @@ function test_input($data) {
    
     if(empty($first_name)){
         $first_name_err = "Please enter your first name!";
-
     }
+
     }
     else
     $first_name_err = "Please enter your first name!";
@@ -61,6 +61,10 @@ function test_input($data) {
 
 else
     $last_name_err = "Please enter your last name!";
+   
+   
+   
+   
     if(!empty($_POST['email'])){
 
 
@@ -117,16 +121,27 @@ $result = $conn->query($sql);
 
         if($email_err == ''){
 
-            $sql = "INSERT INTO USERS (firstname, lastname, email, password) VALUES (?, ?, ?, ?)";
-            $stmt= $conn->prepare($sql);
-            $stmt->bind_param('ssss', $a, $b, $c, $pass);
 
+            $sql = "INSERT INTO users (firstname, lastsname, email, password) VALUES (?, ?, ?, ?)";
+          if( $stmt= $conn->prepare($sql)){
+
+         
+            $stmt->bind_param('ssss', $a, $b, $c, $pass);
             $a = $first_name;
             $b = $last_name;
             $c = $email;
             $pass = $password;
+      if($stmt->execute()){
 
-            $stmt->execute();
+        header('Location: login.php ');
+      }
+
+      else {
+          echo "Sorry, something went wrong! . $stmt->error";
+      }
+    }    else {
+        echo "Sorry, something went wrong!";
+    }
 
         }
 
