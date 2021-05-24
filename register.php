@@ -4,6 +4,16 @@
 
 <?php
 
+session_start();
+
+if(isset($_SESSION['logged_in'])){
+    header('Location: welcome.php');
+
+}
+
+else {
+
+
 
 require_once 'head.php';
 require_once 'database.php';
@@ -122,7 +132,7 @@ $result = $conn->query($sql);
         if($email_err == ''){
 
 
-            $sql = "INSERT INTO users (firstname, lastsname, email, password) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO users (firstname, lastname, email, password) VALUES (?, ?, ?, ?)";
           if( $stmt= $conn->prepare($sql)){
 
          
@@ -155,6 +165,7 @@ $result = $conn->query($sql);
 
 }
 
+}
 
 ?>
 
