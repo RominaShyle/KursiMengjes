@@ -1,173 +1,88 @@
-
-<?php
-
-session_start();
-
-
-if(!isset($_SESSION['counter'])){
-  $_SESSION['counter'] = 1;
-}else
-$_SESSION['counter'] += 1;
-
-// echo "<br>Kam ardhur ne faqe ". $_SESSION['counter'] . " here. <br>";
-
-// echo "<pre>";
-
-// var_dump($_GET);
-// echo "</pre>";
-
-// echo "<pre>";
-
-// var_dump($_POST);
-// echo "</pre>";
-
-// echo "<pre>";
-
-// var_dump($_SESSION);
-// echo "</pre>";
-
-
-##COOKIES ##
-
-//setcookie("name","John", time() + 7200 , '/', "", 0);
-
-
-
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-  if(isset($_POST['username']) && !empty($_POST['username'])){
-
-    $_SESSION['username'] = $_POST['username'];
-  }
-  if(isset($_POST['remember']) && $_POST['remember'] == 'on'){
-   setcookie('username', $_POST['username'], time() + 3600, '/' , "", 0);
-   setcookie('password', $_POST['password'], time() + 3600, '/' , "", 0);
-  }else
-  if(!isset($_POST['remember'])){
-    setcookie('username', '', time() - 3600, '/' , "", 0);
-    setcookie('password', '', time() - 3600, '/' , "", 0);
-  }
-}
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-  
+    <?php require_once 'head.php'; ?>
     <title>Home</title>
-
-    <?php 
-
-require_once 'head.php';
-?>
-
 </head>
 
-
 <body>
+    <?php require_once 'navbar.php'; ?>
 
-
-<?php
-
-require_once 'navbar.php';
-?>
-<div class="container my-4">
-<div class="row">
-<div class="col-md-8">
-    <div class="row">
-        <div class="col-md-6">
-<div class="card" style="width: 18rem;">
-  <img src="images/avatar4.png" class="card-img-top" alt="...">
-  <div class="card-body">
-  </div>
-</div>
+    <div class="container-fluid">
+        <div class="jumbotron m-5">
+            <h1 class="text-center"> MY BOOKS </h1>
         </div>
-        <div class="col-md-6">
-    <div class="card" style="width: 18rem;">
-  <img src="images/avatar3.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  </div>
-</div>
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <button class="btn btn-success" id="show_add" style="float:right"> Add a New Book</button>
+                </div>
+                <div class="form-inline" id="link_add">
+
+                    <div class="form-group col-md-3">
+                        <input type="text" name="title" value="" id="title" placeholder="Title" class="form-control" required>
+
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <input type="text" name="genre" value="" id="genre" placeholder="Genre" class="form-control" required>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" name="plot" value="" id="plot" placeholder="Plot" class="form-control" required>
+
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <button type="button" name="add" class="btn btn-outline-success mx-3 px-4" id="add_new"> Add</button>
+                        <button type="button" name="add" class="btn btn-outline-danger" href="javascript:void(0);" id="cancel" onclick="$('#link_add').slideUp(500); $('#show_add').show(500);"> Cancel</button>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-</div>
-<?php 
 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="" id="records_content">
+                    <!-- KJO DO MANIPULOHET ME ANE TE JAVASCRIPT DOM-->
+                </div>
 
-if(isset($_POST['username']))
-echo "<h3>Thank you ". $_POST['username']  .", your form has been submitted</h3>  
-";
-else 
-echo '<div class="alert alert-danger my-3 text-center" role="alert">
-Submit your form!
-</div>';?></div>
+                <br>
+                <div class="col-md-offset-1 col-md-10" id="table_content">
 
-
-<?php if(!isset($_SESSION['username'])){?>
-
-<div class="col-md-4 p-4" style="
-    background: gainsboro;
-">
-
-
-<form method="Post" action="index.php">
-  <div class="form-group my-3">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name = "username" aria-describedby="emailHelp" placeholder="Enter username" value="<?= isset($_COOKIE['username']) ? $_COOKIE['username'] : '' ?>">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" value="<?= isset($_COOKIE['password']) ? $_COOKIE['password']: '' ?>" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" >
-  </div>
-  <div class="form-check my-3">
-    <input type="checkbox" class="form-check-input " id="exampleCheck1" name="remember" <?= isset($_COOKIE['username']) ? 'checked' : '' ?>>
-    <label class="form-check-label" for="exampleCheck1">Remember me </label>
-  </div>
-  <button type="submit" class="btn btn-primary">Log in</button>
-</form>
-</div>
-
-<form action="upload.php" method="post" enctype="multipart/form-data">
-<input type="file" name="fileToUpload" id="fileToUpload">
-<input type="submit" value="submit" name="submit" class="btn btn-primary">
-</form>
-</div>
-
-</div>
-<?php
-
-}
-else {
-?>
-<div class="col-md-4">
-    <div class="card" style="width: 18rem;">
-  <img src="images/avatar3.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-  </div>
-</div>
+                </div>
+            </div>
         </div>
-    <?php } ?>
+    </div>
+
+
+    </div>
+
+
+<script src="scripts/app.js"></script>
+
 </body>
 
-<script>
-$(document).ready(function(){
 
-$.ajax({
-    url:"http://api.tvmaze.com/schedule?country=US",
-    type:"GET",
-    success: function(response){
-      $.each(response, function(index, value) {
-        console.log(value.show);
-    });      
-  }
-});
-
-
-
-
-
-
-})</script>
 </html>
+
+
+
+
+
+<?php
+
+
+
+
+?>

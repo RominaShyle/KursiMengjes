@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <!--  Linket e listes se parenditur -->
   <a class="navbar-brand px-3" href="#">
-    <?= isset($_SESSION['username']) ? $_SESSION['username'] : SITE_TITLE ?>
+    <?= isset($_SESSION['first_name']) ? $_SESSION['first_name'] : SITE_TITLE ?>
   </a>
 
   <!-- buton per Toggle/Collapse  -->
@@ -33,17 +33,26 @@
       <li class="nav-item">
         <a class="nav-link" href="contact.html"> Contact </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.php"> Sign Up </a>
-      </li>
+
+      <?php if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+
+      echo ' <li class="nav-item">
+      <a class="nav-link" href="register.php"> Sign Up </a>
+    </li>';}?>
+     
     </ul>
 
-    <?php if (isset($_SESSION['username'])) { ?>
+    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] ) { ?>
       <form class="form-inline my-2 my-lg-0" action="logout.php" method="get">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
+        <button class="btn btn-outline-success my-2 mx-4 my-sm-0" s type="submit">Log out</button>
       </form>
-    <?php } ?>
+    <?php } else {  ?>
+      <form class="form-inline my-2 my-lg-0" action="login.php" method="get">
+        <button class="btn btn-outline-success my-2 mx-4 my-sm-0" s type="submit">Log in</button>
+      </form>
   </div>
+
+  <?php } ?>
 
 
 </nav>

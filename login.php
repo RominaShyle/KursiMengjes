@@ -53,7 +53,11 @@ if(empty($_POST['pwd'])){
 
 else  $password = $_POST['pwd'];
 
+
+
 if($password_err == '' && $email_err == ''){
+
+    
     $sql = 'SELECT id, email, password, firstname from users where email = ? ';
 
 
@@ -68,7 +72,7 @@ if($password_err == '' && $email_err == ''){
 
             $stmt->store_result();
 
-            if($stmt->num_rows() == 1 ){
+            if($stmt->num_rows == 1 ){
 
                 $stmt->bind_result($id, $email, $password_hashed, $fname);
                 if($stmt->fetch()){
@@ -76,6 +80,7 @@ if($password_err == '' && $email_err == ''){
 
                     if(password_verify($password, $password_hashed)){
 
+                        
                         session_start();
                         $_SESSION['logged_in'] = true;
                         $_SESSION['id'] = $id;

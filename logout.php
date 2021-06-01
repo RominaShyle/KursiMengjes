@@ -2,12 +2,16 @@
 
 session_start();
 
-        if(isset($_SESSION['username'])){
-              unset($_SESSION['username']);
+
+if(!isset( $_SESSION['logged_in'])){
+      header('Location: login.php');
+}
+        
+            $_SESSION = [];
         session_destroy();
        
-}
 
-header('Location: index.php');
+
+header('Location: login.php');
     
 ?>

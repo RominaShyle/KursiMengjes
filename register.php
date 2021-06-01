@@ -26,9 +26,6 @@ function test_input($data) {
     return $data;
   }
 
-
-
-
 ?>
 <link rel="stylesheet" href="styles/login.css">
 
@@ -69,6 +66,7 @@ function test_input($data) {
     }
 }
 
+
 else
     $last_name_err = "Please enter your last name!";
    
@@ -84,6 +82,7 @@ else
 
             $email_err = "Please enter an email!";
         }else 
+
         if ( !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $email_err = "Invalid email format";
         }
@@ -93,7 +92,7 @@ else
 
     if(!empty($_POST['password'])){
 
-        if(strlen($_POST['password']) < 7){
+        if(strlen($_POST['password']) < 6){
             $password_err = "Password must contain at least 6 characters!";
         }
         else {
@@ -147,7 +146,7 @@ $result = $conn->query($sql);
       }
 
       else {
-          echo "Sorry, something went wrong! . $stmt->error";
+          echo "Sorry, something went wrong!";
       }
     }    else {
         echo "Sorry, something went wrong!";
@@ -189,8 +188,9 @@ $result = $conn->query($sql);
             <div class="col-sm-6 mb-3"> <label>Password</label> <input type="password" name="password" id="pwd" class="form-control  <?=empty($password_err) ? '' : 'is-invalid'  ?>"><span class="<?=empty($password_err) ? '' : 'error'  ?>"> <small> <?= $password_err ?></small> </span> </div>
             <div class="col-sm-6 mb-3"> <label>Confirm Password</label> <input type="password" name="cpwd" id="cpwd" class="form-control  <?=empty($cpwd_err) ? '' : 'is-invalid'  ?>"><span> <small> <?= $cpwd_err ?></small> </span> </div>
         </div>
-        <div class="mb-3"> <label class="option">I agree to the <a href="#">Terms and Conditions</a> <input type="checkbox" checked> <span class="checkmark"></span> </label> </div>
-        <div class="form-field"> <input type="submit" value="Register" class="register" name="register"> </div>
+        <div class="form-field"> 
+        <input type="submit" value="Register" class="register" name="register">
+         </div>
     </form>
 </div>
 
