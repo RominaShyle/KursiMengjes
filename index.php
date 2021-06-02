@@ -36,7 +36,7 @@
 
                     </div>
                     <div class="form-group col-md-3">
-                        <input type="text" name="plot" value="" id="plot" placeholder="Plot" class="form-control" required>
+                        <input type="text" name="year" value="" id="year" placeholder="Year" class="form-control" required>
 
                     </div>
 
